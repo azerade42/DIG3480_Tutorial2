@@ -7,6 +7,8 @@ public class CameraScript : MonoBehaviour
 
     public GameObject target;
 
+    [SerializeField] float minY, maxY;
+
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,6 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        this.transform.position = new Vector3(target.transform.position.x, this.transform.position.y, this.transform.position.z);
+        this.transform.position = new Vector3(target.transform.position.x, Mathf.Clamp(target.transform.position.y, minY, maxY), this.transform.position.z);
     }
 }
